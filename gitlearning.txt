@@ -2,3 +2,31 @@ Test for git learning.
 git is free software for version control.
 gitrepository文件夹相当于工作区， .git:git的版本库,版本库中包括了一个叫stage的暂存区,git add 相当于是把文件添加到暂存区,而git commit是将我们的修改内容提交到当前分支.
 git跟踪并管理的是修改不是针对于文件本身,任何修改需要先提交到暂存区,然后再使用git commit进行提交到当前分支.
+1.版本修改:
+	命令git checkout -- readme.txt意思就是，把readme.txt文件在工作区的修改全部撤销，这里有两种情况：
+	一种是readme.txt自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；
+	一种是readme.txt已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。
+	总之，就是让这个文件回到最近一次git commit或git add时的状态。
+	git checkout -- file命令中的--很重要，没有--，就变成了“切换到另一个分支”的命令,
+	用命令git reset HEAD <file>可以把暂存区的修改撤销掉（unstage），重新放回工作区.
+	关于撤销修改:
+		场景1：当改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令git checkout -- file。
+		场景2：当不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令git reset HEAD <file>，就回到了场景1，第二步按场景1操作。
+		场景3：已经提交了不合适的修改到版本库时，想要撤销本次提交，可以使用版本回退，不过前提是没有推送到远程库。
+2.删除文件:
+	有两种情况: 
+		第一种情况:从版本库中删除该文件,先使用git rm,然后再使用git commit;
+		第二种情况:删错了,可以使用git checkout -- test.txt, 可以恢复到版本库中的最新版本,git checkout其实是用版本库里的版本替换工作区的版本，无论工作区是修改还是删除，都可以“一键还原”
+	命令git rm用于删除一个文件。如果一个文件已经被提交到版本库，那么你永远不用担心误删，但是要小心，你只能恢复文件到最新版本，你会丢失最近一次提交后你修改的内容。
+3.远程仓库:
+	1.在github注册一个账户建立github远程仓库,需要确认本地用户目录下是否存在.ssh目录,再确认该目录下是否存在id_rsa和id_rsa.pub这两个文件,如果不存在:使用$ ssh-keygen -t rsa -C "youremail@example.com"创建SSHkey,
+	2.登陆github,进入AccontSetting,添加SSHkey,key的内容是id_rsa.pub中的内容.
+	如果有多台电脑只需将key添加到github中的账户就好.
+	添加远程仓库:
+		1.登陆github,创建一个新的repository与本地工作区名字相同;
+		2.将本地仓库与github仓库连接:git remote add origin git@github.com:chenxingyin/learngit.git,远程仓库名字:origin;
+		3.将本地仓库数据push到远程仓库:git push -u origin master;
+	要关联一个远程库，使用命令git remote add origin git@server-name:path/repo-name.git；
+	关联后，使用命令git push -u origin master第一次推送master分支的所有内容；
+	此后，每次本地提交后，只要有必要，就可以使用命令git push origin master推送最新修改；
+

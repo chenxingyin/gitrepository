@@ -11,3 +11,5 @@ cat (fileName) 显示文件内容
 git reset --hard (commitId) 回退到某一个版本
 git reflog 查看命令历史，可以得到提交命令的id
 git checkout -- (fileName) 撤销工作区中所有的修改
+git rm (fileName) 删除文件
+git push origin master 推送最新修改到远程仓库(origin为远程仓库名字)
