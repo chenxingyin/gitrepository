@@ -1,2 +1,2 @@
 Test for git learning.
-git is free software.
+git is free software for version control.
