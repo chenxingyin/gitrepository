@@ -1,2 +1,4 @@
 Test for git learning.
 git is free software for version control.
+gitrepository文件夹相当于工作区， .git:git的版本库,版本库中包括了一个叫stage的暂存区,git add 相当于是把文件添加到暂存区,而git commit是将我们的修改内容提交到当前分支.
+git跟踪并管理的是修改不是针对于文件本身,任何修改需要先提交到暂存区,然后再使用git commit进行提交到当前分支.

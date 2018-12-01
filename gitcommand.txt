@@ -1,4 +1,5 @@
 this is for git command.
+git init 初始化一个仓库
 git add (fileName) 将文件添加到仓库
 git commit -m "修改内容的描述" 将文件提交到仓库
 git log 显示文件修改日志
@@ -7,5 +8,6 @@ git log --pretty=oneline  收缩日志长度
 git status 检查仓库是否有文件修改
 git reset --hard HEAD^ 版本回退到上一个版本（HEAD表示当前版本，HEAD^表示上一个版本，HEAD~20：前第二十个版本）
 cat (fileName) 显示文件内容
-git reset --hard (版本id) 回退到某一个版本
-git relog 显示所有更改记录和版本id
+git reset --hard (commitId) 回退到某一个版本
+git reflog 查看命令历史，可以得到提交命令的id
+git checkout -- (fileName) 撤销工作区中所有的修改
